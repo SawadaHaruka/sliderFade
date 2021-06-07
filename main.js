@@ -3,7 +3,7 @@ let img_index = img_num - 1;//ステート用に直す
 
 const init = () => {
   let state = 0;
-  let images = [], circles = [];
+  let images = [], circles = [], btns = [];
 
   const setImg = () => {
     //画像取得
@@ -16,17 +16,18 @@ const init = () => {
 
     //svgエリア
     let svg = document.getElementById('svg_stage');
-    let NS = svg.getAttribute('xmlns');//多分svgの空間のこと
+    let NS = svg.getAttribute('xmlns');
 
-    //インジゲータ配置
-    let en_width = 0.5;//svg空間100に対しての大きさ
+    //インジケータ配置
+    let en_width = 0.5;//svg空間の幅100に対しての大きさ
     for (let j = 0; j < img_num; j++) {
       let circle = document.createElementNS(NS, 'circle');//円を生成
       circle.setAttributeNS(null, 'cx', j * 3 + 50 - (en_width * img_index / 2 + en_width / 2 + 2 * img_index / 2));
-      circle.setAttributeNS(null, 'cy', 1.5);
+      circle.setAttributeNS(null, 'cy', 1);
       circle.setAttributeNS(null, 'r', en_width);
       svg.appendChild(circle);
       circle.style.fill = "#bbb";
+      circle.style.cursor = "pointer";
       circles.push(circle);
       circles[state].style.fill = "#d00022";
       circle.addEventListener('click', () => {
@@ -41,45 +42,46 @@ const init = () => {
       });
       circle.addEventListener('mouseout', () => {
         circle.style.fill = "#bbb";
-        if(circle==circles[state]){
+        if (circle == circles[state]) {
           circle.style.fill = "#d00022";
         }
       });
     }
 
-    //左：戻るボタン
-    let btnLeft = document.createElementNS(NS, 'polygon');//三角形を生成
-    btnLeft.setAttributeNS(null, 'points', "32.4 1.5, 35 0, 35 3");
+    let btnLeft = document.createElementNS(NS, 'polygon');//左：戻るボタン
+    btnLeft.setAttributeNS(null, 'points', "33.27 1, 35 0, 35 2");
     svg.appendChild(btnLeft);
-    btnLeft.style.fill = "#d00022";
-    btnLeft.addEventListener('click', () => {
-      if (state == 0) {
-        state = img_index;
-      } else {
-        state -= 1;
-      }
-      changeImg();
-    });
-    //右：進むボタン
-    let btnRight = document.createElementNS(NS, 'polygon');//三角形を生成
-    btnRight.setAttributeNS(null, 'points', "67.6 1.5, 65 0, 65 3");
+    let btnRight = document.createElementNS(NS, 'polygon');//右：進むボタン
+    btnRight.setAttributeNS(null, 'points', "66.73 1, 65 0, 65 2");
     svg.appendChild(btnRight);
-    btnRight.style.fill = "#d00022";
-    btnRight.addEventListener('click', () => {
-      if (state == img_index) {
-        state = 0;
-      } else {
-        state += 1;
-      }
-      changeImg();
-    });
+    btns.push(btnLeft, btnRight);
+    for (let k = 0; k < 2; k++) {
+      btns[k].style.fill = "#d00022";
+      btns[k].style.cursor = "pointer";
+      btns[k].addEventListener('click', () => {
+        if (btns[k] == btns[0]) {
+          if (state == 0) {
+            state = img_index;
+          } else {
+            state -= 1;
+          }
+        } else {
+          if (state == img_index) {
+            state = 0;
+          } else {
+            state += 1;
+          }
+        }
+        changeImg();
+      });
+    }
     let hover = (target) => {
       target.addEventListener('mouseover', () => {
         let z = () => {
-          if (target == btnLeft) {
-            return "31.4 1.5, 35 0, 35 3"; //左：戻るボタン
+          if (target == btns[0]) {
+            return "32.27 1, 35 0, 35 2"; //左：戻るボタン
           } else {
-            return "68.6 1.5, 65 0, 65 3"; //右：進むボタン
+            return "67.73 1, 65 0, 65 2"; //右：進むボタン
           }
         }
         anime({
@@ -91,10 +93,10 @@ const init = () => {
       });
       target.addEventListener('mouseout', () => {
         let zz = () => {
-          if (target == btnLeft) {
-            return "32.4 1.5, 35 0, 35 3"; //左：戻るボタン
+          if (target == btns[0]) {
+            return "33.27 1, 35 0, 35 2"; //左：戻るボタン
           } else {
-            return "67.6 1.5, 65 0, 65 3"; //右：進むボタン
+            return "66.73 1, 65 0, 65 2"; //右：進むボタン
           }
         }
         anime({
@@ -105,12 +107,13 @@ const init = () => {
         });
       });
     }
-    hover(btnLeft);
-    hover(btnRight);
+    hover(btns[0]);
+    hover(btns[1]);
+
   }
   setImg();
 
-  //ステートによって画像とインジゲータの色が変わる
+  //ステートによって画像とインジケータの色が変わる
   const changeImg = () => {
     //全部取得して変更
     for (let l = 0; l < img_num; l++) {
