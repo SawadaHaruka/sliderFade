@@ -29,35 +29,39 @@ const init = () => {
       circle.style.fill = "#bbb";
       circle.style.cursor = "pointer";
       circles.push(circle);
-      circles[state].style.fill = "#d00022";
+      circles[state].style.fill = "#c50022";
       circle.addEventListener('click', () => {
         let number = circles.indexOf(circle, 0); //クリックした円を取得
         circles[j].style.fill = "#bbb";
-        circle.style.fill = "#d00022";//クリックした円塗り替え
+        circle.style.fill = "#c50022";//クリックした円塗り替え
         state = number;//クリックしたn番目をステートにする
         changeImg();
       });
       circle.addEventListener('mouseover', () => {
-        circle.style.fill = "#d00022";
+        circle.style.fill = "#c50022";
       });
       circle.addEventListener('mouseout', () => {
         circle.style.fill = "#bbb";
         if (circle == circles[state]) {
-          circle.style.fill = "#d00022";
+          circle.style.fill = "#c50022";
         }
       });
     }
 
+    let btnLeft_points = "33.27 1, 35 0, 35 2",
+      btnRight_points = "66.73 1, 65 0, 65 2";
     let btnLeft = document.createElementNS(NS, 'polygon');//左：戻るボタン
-    btnLeft.setAttributeNS(null, 'points', "33.27 1, 35 0, 35 2");
+    btnLeft.setAttributeNS(null, 'points', btnLeft_points);
     svg.appendChild(btnLeft);
     let btnRight = document.createElementNS(NS, 'polygon');//右：進むボタン
-    btnRight.setAttributeNS(null, 'points', "66.73 1, 65 0, 65 2");
+    btnRight.setAttributeNS(null, 'points', btnRight_points);
     svg.appendChild(btnRight);
     btns.push(btnLeft, btnRight);
     for (let k = 0; k < 2; k++) {
-      btns[k].style.fill = "#d00022";
+      btns[k].style.fill = "#c50022";
       btns[k].style.cursor = "pointer";
+      btns[k].style.stroke="#fff";
+      btns[k].style.strokeWidth=0.1;
       btns[k].addEventListener('click', () => {
         if (btns[k] == btns[0]) {
           if (state == 0) {
@@ -94,9 +98,9 @@ const init = () => {
       target.addEventListener('mouseout', () => {
         let zz = () => {
           if (target == btns[0]) {
-            return "33.27 1, 35 0, 35 2"; //左：戻るボタン
+            return btnLeft_points; //左：戻るボタン
           } else {
-            return "66.73 1, 65 0, 65 2"; //右：進むボタン
+            return btnRight_points; //右：進むボタン
           }
         }
         anime({
@@ -109,7 +113,6 @@ const init = () => {
     }
     hover(btns[0]);
     hover(btns[1]);
-
   }
   setImg();
 
@@ -121,7 +124,7 @@ const init = () => {
       images[l].style.opacity = 0;
     }
     //ステートのみ上書き
-    circles[state].style.fill = "#d00022";
+    circles[state].style.fill = "#c50022";
     images[state].style.opacity = 1;
   }
 
