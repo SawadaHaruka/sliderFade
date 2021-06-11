@@ -1,5 +1,5 @@
 body {
-  margin: 3vw;
+  margin: 0;
 }
 .topKeyVisual {
   position: relative;
@@ -11,7 +11,7 @@ body {
   width: 100%;
   transition: opacity 0.5s ease-out;
 }
-#img1{
+#img1 {
   position: relative;
 }
 #svg_stage {
