@@ -31,8 +31,7 @@ const init = () => {
       circle.style.cursor = "pointer";
       circles.push(circle);
       circle.addEventListener('click', () => {
-        let number = circles.indexOf(circle, 0); //クリックした円を取得
-        state = number;//クリックしたn番目をステートにする
+        state = circles.indexOf(circle, 0); //クリックした円をステートにする
         changeImg();
       });
       circle.addEventListener('mouseover', () => {
