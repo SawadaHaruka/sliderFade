@@ -8,21 +8,25 @@ body {
 .topKeyVisual img {
   position: absolute;
   top: 0;
+  left: 0;
   width: 100%;
   transition: opacity 0.5s ease-out;
 }
 .btn {
   position: absolute;
-  top: 14vw;
-  width: 3.5vw;
+  top: 14.5vw;
+  width: 3.3vw;
+  filter:drop-shadow(3px 3px 3px rgba(0,0,0,0.5));
 }
-#svg_btnL {
+.btnL {
   left: 0;
 }
-#svg_btnR {
+.btnR {
   right: 0;
 }
 #svg_dots {
-  width: 100vw;
+  position: absolute;
+  top: 28vw;
+  left:50%;
   transform: rotate(-90deg);
 }
