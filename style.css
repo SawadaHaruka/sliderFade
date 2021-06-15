@@ -23,7 +23,6 @@ body {
   right: 0;
 }
 #svg_dots {
-  top:50vw;
   width: 100vw;
   transform: rotate(-90deg);
 }
