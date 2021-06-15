@@ -17,11 +17,9 @@ const init = () => {
 
     //svgエリア
     const svg = document.getElementById('svg_btnL'),
-      NS = svg.getAttribute('xmlns'),
       svg1 = document.getElementById('svg_btnR'),
-      NS1 = svg1.getAttribute('xmlns'),
       svg2 = document.getElementById('svg_dots'),
-      NS2 = svg2.getAttribute('xmlns');
+      NS = "http://www.w3.org/2000/svg";
 
     //戻る・進むボタン
     {
@@ -30,7 +28,7 @@ const init = () => {
       let btnLeft = document.createElementNS(NS, 'polygon');//左：戻るボタン
       btnLeft.setAttribute('points', btnLeft_points);
       svg.appendChild(btnLeft);
-      let btnRight = document.createElementNS(NS1, 'polygon');//右：進むボタン
+      let btnRight = document.createElementNS(NS, 'polygon');//右：進むボタン
       btnRight.setAttribute('points', btnRight_points);
       svg1.appendChild(btnRight);
       btns.push(btnLeft, btnRight);
@@ -94,7 +92,7 @@ const init = () => {
     //インジケータ配置
     for (let j = 0; j < img_num; j++) {
       let en_width = 0.5;//svg空間の幅100に対しての大きさ
-      let circle = document.createElementNS(NS2, 'circle');//円を生成
+      let circle = document.createElementNS(NS, 'circle');//円を生成
       circle.setAttribute('cx', 1);
       circle.setAttribute('cy', j * 3 + 50 - (en_width * img_index / 2 + en_width / 2 + 2 * img_index / 2));
       circle.setAttribute('r', en_width);
@@ -116,7 +114,7 @@ const init = () => {
         }
       });
 
-      let stroke_c = document.createElementNS(NS2, 'circle');//線を生成
+      let stroke_c = document.createElementNS(NS, 'circle');//線を生成
       stroke_c.setAttribute('cx', 1);
       stroke_c.setAttribute('cy', j * 3 + 50 - (en_width * img_index / 2 + en_width / 2 + 2 * img_index / 2));
       stroke_c.setAttribute('r', en_width * 1.8);
