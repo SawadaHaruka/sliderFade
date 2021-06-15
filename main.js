@@ -91,7 +91,7 @@ const init = () => {
       let en_width = 20;//svg空間の幅100に対しての大きさ
       let circle = document.createElementNS(NS, 'circle');//円を生成
       circle.setAttribute('cx', 1);
-      circle.setAttribute('cy', j * 160 - 260);
+      circle.setAttribute('cy', j * 140 - 240);
       circle.setAttribute('r', en_width);
       svg.appendChild(circle);
       circle.style.fill = glay;
@@ -113,7 +113,7 @@ const init = () => {
 
       let stroke_c = document.createElementNS(NS, 'circle');//線を生成
       stroke_c.setAttribute('cx', 1);
-      stroke_c.setAttribute('cy', j * 160 - 260);
+      stroke_c.setAttribute('cy', j * 140 - 240);
       stroke_c.setAttribute('r', en_width * 1.8);
       stroke_c.setAttribute('stroke-width', 8);
       stroke_c.style.fill = 'none';
