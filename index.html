@@ -5,18 +5,30 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="./style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" defer></script>
-  <script type="module" src="./main.js" defer></script>
 </head>
 
 <body>
   <div class="topKeyVisual">
-      <a href="http://example.com/"><img src="kadai_sample_data/1.jpg" alt="image1" id="img1"></a>
-      <a href="http://example.com/"><img src="kadai_sample_data/2.jpg" alt="image2" id="img2"></a>
-      <a href="http://example.com/"><img src="kadai_sample_data/3.jpg" alt="image3" id="img3"></a>
-      <a href="http://example.com/"><img src="kadai_sample_data/4.jpg" alt="image4" id="img4"></a>
-      <a href="http://example.com/"><img src="kadai_sample_data/5.jpg" alt="image5" id="img5"></a>
-    <svg id="svg_stage" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 100 2"></svg>
+    <a href="http://example.com/"><img src="kadai_sample_data/1.jpg" alt="画像1" id="img1"></a>
+    <a href="http://example.com/"><img src="kadai_sample_data/2.jpg" alt="画像2" id="img2"></a>
+    <a href="http://example.com/"><img src="kadai_sample_data/3.jpg" alt="画像3" id="img3"></a>
+    <a href="http://example.com/"><img src="kadai_sample_data/4.jpg" alt="画像4" id="img4"></a>
+    <a href="http://example.com/"><img src="kadai_sample_data/5.jpg" alt="画像5" id="img5"></a>
+    <svg class="btn btnL" viewbox="0 0 100 100">
+      <g id="g_btnL">
+        <rect width="100" height="100" fill="#c50022" style="opacity:0.8"/>
+        <polygon id="svg_btnL" points="20 50, 80 20, 60 50, 80 80" />
+      </g>
+    </svg>
+    <svg class="btn btnR" viewbox="0 0 100 100">
+      <g id="g_btnR">
+        <rect width="100" height="100" fill="#c50022" style="opacity:0.8"/>
+        <polygon id="svg_btnR" points="80 50, 20 25, 40 50, 20 80" />
+      </g>
+    </svg>
+    <svg id="svg_dots" viewbox="-50 0 100 100" width="2vw" height="20vw"></svg>
   </div>
+  <script type="module" src="./main.js"></script>
 </body>
 
 </html>

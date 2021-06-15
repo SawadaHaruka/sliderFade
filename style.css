@@ -1,7 +1,8 @@
 body {
   margin: 0;
 }
-.topKeyVisual {
+.topKeyVisual,
+#img1 {
   position: relative;
 }
 .topKeyVisual img {
@@ -11,10 +12,21 @@ body {
   width: 100%;
   transition: opacity 0.5s ease-out;
 }
-#img1 {
-  position: relative;
+.btn {
+  position: absolute;
+  top: 14.5vw;
+  width: 3.3vw;
+  filter:drop-shadow(3px 3px 3px rgba(0,0,0,0.5));
 }
-#svg_stage {
-  position: relative;
-  top: 1em;
+.btnL {
+  left: 0;
+}
+.btnR {
+  right: 0;
+}
+#svg_dots {
+  position: absolute;
+  top: 28vw;
+  left:50%;
+  transform: rotate(-90deg);
 }
