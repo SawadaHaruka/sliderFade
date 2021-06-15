@@ -38,7 +38,7 @@ const init = () => {
         btns[k].style.fill = "#c50022";
         btns[k].style.cursor = "pointer";
         btns[k].style.stroke = "#fff";
-        btns[k].style.strokeWidth = "5px";
+        btns[k].style.strokeWidth = "3px";
         btns[k].addEventListener('click', () => {
           if (btns[k] == btns[0]) {
             if (state == 0) {
@@ -59,7 +59,7 @@ const init = () => {
       let hover = (target) => {
         target.addEventListener('mouseover', () => {
           let z = () => {
-            if (target == btns[0]) {
+            if (target === btns[0]) {
               return "0 50, 100 10, 75 50, 100 90"; //左：戻るボタン
             } else {
               return "100 50, 0 10, 25 50, 0 90"; //右：進むボタン
@@ -74,7 +74,7 @@ const init = () => {
         });
         target.addEventListener('mouseout', () => {
           let zz = () => {
-            if (target == btns[0]) {
+            if (target === btns[0]) {
               return btnLeft_points; //左：戻るボタン
             } else {
               return btnRight_points; //右：進むボタン
@@ -95,7 +95,7 @@ const init = () => {
     for (let j = 0; j < img_num; j++) {
       let en_width = 0.5;//svg空間の幅100に対しての大きさ
       let circle = document.createElementNS(NS2, 'circle');//円を生成
-      circle.setAttribute('cx', 1); 
+      circle.setAttribute('cx', 1);
       circle.setAttribute('cy', j * 3 + 50 - (en_width * img_index / 2 + en_width / 2 + 2 * img_index / 2));
       circle.setAttribute('r', en_width);
       svg2.appendChild(circle);
@@ -117,7 +117,7 @@ const init = () => {
       });
 
       let stroke_c = document.createElementNS(NS2, 'circle');//線を生成
-      stroke_c.setAttribute('cx', 1); 
+      stroke_c.setAttribute('cx', 1);
       stroke_c.setAttribute('cy', j * 3 + 50 - (en_width * img_index / 2 + en_width / 2 + 2 * img_index / 2));
       stroke_c.setAttribute('r', en_width * 1.8);
       stroke_c.setAttribute('stroke-width', '0.2');
